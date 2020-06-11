@@ -105,3 +105,31 @@ function currentPosition(position) {
     searchTerm = `lat=${latitude}&lon=${longitude}`;
     getWeather(searchTerm);
 }
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("src", ev.target.id);
+}
+function drop(ev) {
+    ev.preventDefault();
+    let data = document.getElementById(ev.dataTransfer.getData("src"));
+    let dataParent = data.parentNode;
+    let target = ev.currentTarget.firstElementChild;
+
+    ev.currentTarget.replaceChild(data, target);
+    dataParent.appendChild(target);
+
+    savePositon();
+}
+
+function savePositon() {
+    let positionId = document.getElementsByClassName("weather__drag");
+    names = [];
+    for (let i = 0; i < positionId.length; i++) {
+        names.push(positionId[i].id.toLowerCase());
+        localStorage.setItem("names", JSON.stringify(names));
+    }
+}
