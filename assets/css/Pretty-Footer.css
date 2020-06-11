@@ -68,6 +68,17 @@ footer {
   margin: 10px 15px 10px 0;
 }
 
+.fas.footer-contacts-icon {
+  background-color: #33383b;
+  color: #fff;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 38px;
+  margin: 10px 15px 10px 0;
+}
 span.new-line-span {
   display: block;
   font-weight: normal;
