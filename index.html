@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="assets/css/Pretty-Search-Form.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/weather.css">
 </head>
 
 <body>
@@ -29,10 +30,12 @@
     </nav>
     <form class="search-form">
         <div class="input-group">
-            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="Your City Name" style="max-width: 500px;width: 500px;">
-            <div class="input-group-append"><button class="btn btn-light" type="button">Add</button></div>
+            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control add__input" type="text" placeholder="Your City Name" style="max-width: 500px;width: 500px;">
+            <div class="input-group-append"><button class="btn btn-light button__add" type="button" onclick=addCity()>Add</button></div>
         </div>
     </form>
+    <div class="weather__container" id="test">
+    </div>
     <footer>
         <div class="row">
             <div class="col-sm-6 col-md-4 footer-contacts">
@@ -67,6 +70,7 @@
     </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script_weather.js"></script>
 </body>
 
 </html>
