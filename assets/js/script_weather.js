@@ -4,12 +4,7 @@ let names = [];
 let positions = [];
 const language = "nl";
 let searchTerm;
-let weathernames = JSON.parse(localStorage.getItem("names"));
-
-window.onload = function () {
-    console.log(weathernames);
-    weatherLoad(weathernames);
-}
+let weathernames = JSON.parse(localStorage.getItem("cities"));
 
 //Load previous added city's
 function weatherLoad(weathernames){
@@ -19,6 +14,20 @@ function weatherLoad(weathernames){
             searchTerm = `?q=${name}`;
             getWeather(searchTerm);
         })
+    }
+}
+
+function addCity() {
+    let addclass = document.getElementsByClassName("add__input");
+    searchTerm = `q=${addclass[0].value.toLowerCase()}`;
+    if (searchTerm == "den haag") {
+        searchTerm = "the hague";
+    } if (names.includes(searchTerm)) {
+        console.log("City already displayed")
+        return;
+    }
+    else {
+        getWeather(searchTerm);
     }
 }
 
@@ -37,6 +46,7 @@ function getWeather() {
 }
 
 function addWeather(weather) {
+    console.log(weather.name);
     if (names.includes(weather.name.toLowerCase())) {
         let weatherTemp = document.getElementsByClassName("weather__temp " + weather.name);
         for (let i = 0; i < weatherTemp.length; i++) {
@@ -132,4 +142,10 @@ function savePositon() {
         names.push(positionId[i].id.toLowerCase());
         localStorage.setItem("names", JSON.stringify(names));
     }
+}
+
+window.onload = function () {
+    localStorage.clear();
+    console.log(weathernames);
+    weatherLoad(weathernames);
 }
