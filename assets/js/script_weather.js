@@ -6,23 +6,6 @@ const language = "nl";
 let searchTerm;
 let weathernames = JSON.parse(localStorage.getItem("cities"));
 
-//Weather Images
-var SunnyImg = document.createElement("img");
-SunnyImg.src = "../img/weather/Sunny.jpg";
-SunnyImg.setAttribute("height", "768");
-SunnyImg.setAttribute("width", "1024");
-
-var CloudyImg = document.createElement("img");
-CloudyImg.src = "../img/weather/Cloudy.jpg";
-CloudyImg.setAttribute("height", "768");
-CloudyImg.setAttribute("width", "1024");
-
-var RainyImg = document.createElement("img");
-RainyImg.src = "../img/weather/Rainy.jpg";
-RainyImg.setAttribute("height", "768");
-RainyImg.setAttribute("width", "1024");
-
-
 //Load previous added city's
 function weatherLoad(weathernames){
     console.log(weathernames, "ASDSADADSAD");
@@ -103,10 +86,22 @@ function addWeather(weather) {
         location.setAttribute("ondrop", "drop(event)");
         location.setAttribute("ondragover", "allowDrop(event)");
 
+        
         cityName.innerHTML = weather.name;
         wind.innerHTML = "Windspeed: " + weather.wind.speed;
         temp.innerHTML = Math.round(weather.main.temp) + "&deg; ";
-        rain.innerHTML = weather.weather[0].main;
+        rain.innerHTML = weather.weather[0].description;
+        
+        //Weather img
+        if(weather.weather[0].main == "Clear"){
+            right.style.backgroundImage = "url(./assets/img/weather/Sunny.jpg)";
+        }
+        else if(weather.weather[0].main == "Clouds"){
+            right.style.backgroundImage = "url(./assets/img/weather/Cloudy.jpg)";
+        }
+        else{
+            right.style.backgroundImage = "url(./assets/img/weather/Rainy.jpg)";
+        }
 
         left.appendChild(temp);
         left.appendChild(cityName);
