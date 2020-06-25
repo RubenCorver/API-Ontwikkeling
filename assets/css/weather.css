@@ -1,10 +1,11 @@
 .weather__container {
-    width: 90%;
+    width: 100%;
     display: grid;
     grid-template-columns: 30% 30%;
     grid-gap: 15px;
     justify-content: space-around;
     padding: 1.5%;
+    padding-bottom: 2%;
   }
   .weather__drag {
     display: flex;
@@ -26,6 +27,15 @@
   .weather__right {
     width: 60%;
     background-color: pink;
+  }
+  .weather__rain {
+    font-size: 1vw;
+    color: white;
+    padding-top: 10px;
+  }
+  .weather__wind {
+    font-size: 0.75vw;
+    color: White;
   }
   .weather__temp {
     font-size: 30px;
