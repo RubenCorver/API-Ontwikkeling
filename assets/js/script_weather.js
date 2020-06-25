@@ -31,6 +31,10 @@ function addCity() {
     }
 }
 
+function removeCity() {
+
+}
+
 //Weather API call
 function getWeather() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?${searchTerm}&APPID=${key}&lang=${language}&units=${units}`)
@@ -45,6 +49,7 @@ function getWeather() {
         });
 }
 
+//Add in 
 function addWeather(weather) {
     console.log(weather.name);
     if (names.includes(weather.name.toLowerCase())) {
@@ -63,7 +68,7 @@ function addWeather(weather) {
         console.log("weather update")
     } else {
         let location = document.createElement("article")
-        location.className = "weather__location";
+        location.className = "weather__location " + weather.name;
 
         let drag = document.createElement("div")
         drag.className = "weather__drag " + weather.name;
@@ -116,6 +121,7 @@ function currentPosition(position) {
     getWeather(searchTerm);
 }
 
+//drop and drag
 function allowDrop(ev) {
     ev.preventDefault();
 }
