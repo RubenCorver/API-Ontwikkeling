@@ -8,18 +8,18 @@ let weathernames = JSON.parse(localStorage.getItem("cities"));
 
 //Weather Images
 var SunnyImg = document.createElement("img");
-SunnyImg.src = "../img/weather/Sunny.jpg";
-SunnyImg.setAttribute("height", "768");
+SunnyImg.backgroundImage = "../img/weather/Sunny.jpg";
+SunnyImg.setAttribute("height", "512");
 SunnyImg.setAttribute("width", "1024");
 
 var CloudyImg = document.createElement("img");
-CloudyImg.src = "../img/weather/Cloudy.jpg";
-CloudyImg.setAttribute("height", "768");
+CloudyImg.backgroundImage = "../img/weather/Cloudy.jpg";
+CloudyImg.setAttribute("height", "512");
 CloudyImg.setAttribute("width", "1024");
 
 var RainyImg = document.createElement("img");
-RainyImg.src = "../img/weather/Rainy.jpg";
-RainyImg.setAttribute("height", "768");
+RainyImg.backgroundImage = "../img/weather/Rainy.jpg";
+RainyImg.setAttribute("height", "512");
 RainyImg.setAttribute("width", "1024");
 
 
@@ -103,10 +103,27 @@ function addWeather(weather) {
         location.setAttribute("ondrop", "drop(event)");
         location.setAttribute("ondragover", "allowDrop(event)");
 
+        
         cityName.innerHTML = weather.name;
         wind.innerHTML = "Windspeed: " + weather.wind.speed;
         temp.innerHTML = Math.round(weather.main.temp) + "&deg; ";
-        rain.innerHTML = weather.weather[0].main;
+        //rain.innerHTML = weather.weather[0].main;
+        
+        if(weather.weather[0].main == "Clear"){
+            console.log('Clear')
+            rain.innerHTML = SunnyImg
+        }
+        else if(weather.weather[0].main == "Cloudy"){
+            console.log('Cloudy')
+            rain.innerHTML = CloudyImg
+        }
+        else{
+            console.log('Rainy')
+            rain.innerHTML = RainyImg
+        }
+        
+        //rain.innerHTML = weather.weather[0].main;
+        
 
         left.appendChild(temp);
         left.appendChild(cityName);
