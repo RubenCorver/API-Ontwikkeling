@@ -33,7 +33,7 @@ function addCity() {
 function removeCity() {
     let city = document.getElementsByClassName("city__input");
     let cityname = city[0].value;
-    let citydiv = document.getElementsByClassName(cityname);
+    let citydiv = document.getElementsByClassName(`weather__drag ${cityname}`);
     citydiv[0].parentNode.removeChild(citydiv[0]);
     names.splice(cityname.toLowerCase(),1);
     localStorage.setItem("cities", JSON.stringify(names));
@@ -70,7 +70,7 @@ function addWeather(weather) {
         console.log("weather update")
     } else {
         let location = document.createElement("article")
-        location.className = "weather__location " + weather.name;
+        location.className = "weather__location";
 
         let drag = document.createElement("div")
         drag.className = "weather__drag " + weather.name;
