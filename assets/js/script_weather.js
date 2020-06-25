@@ -7,9 +7,21 @@ let searchTerm;
 let weathernames = JSON.parse(localStorage.getItem("cities"));
 
 //Weather Images
-var SunnyImg = document.getElementById("SunnyImage").src = "../img/weather/Sunny.jpg";
-var CloudyImg = document.getElementById("CloudyImage").src = "../img/weather/Cloudy.jpg";
-var RainyImg = document.getElementById("RainyImage").src = "../img/weather/Rainy.jpg";
+var SunnyImg = document.createElement("img");
+SunnyImg.src = "../img/weather/Sunny.jpg";
+SunnyImg.setAttribute("height", "768");
+SunnyImg.setAttribute("width", "1024");
+
+var CloudyImg = document.createElement("img");
+CloudyImg.src = "../img/weather/Cloudy.jpg";
+CloudyImg.setAttribute("height", "768");
+CloudyImg.setAttribute("width", "1024");
+
+var RainyImg = document.createElement("img");
+RainyImg.src = "../img/weather/Rainy.jpg";
+RainyImg.setAttribute("height", "768");
+RainyImg.setAttribute("width", "1024");
+
 
 //Load previous added city's
 function weatherLoad(weathernames){
