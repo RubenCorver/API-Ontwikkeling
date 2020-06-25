@@ -6,6 +6,11 @@ const language = "nl";
 let searchTerm;
 let weathernames = JSON.parse(localStorage.getItem("cities"));
 
+//Weather Images
+var SunnyImg = document.getElementById("SunnyImage").src = "../img/weather/Sunny.jpg";
+var CloudyImg = document.getElementById("CloudyImage").src = "../img/weather/Cloudy.jpg";
+var RainyImg = document.getElementById("RainyImage").src = "../img/weather/Rainy.jpg";
+
 //Load previous added city's
 function weatherLoad(weathernames){
     console.log(weathernames, "ASDSADADSAD");
