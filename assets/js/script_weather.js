@@ -8,17 +8,16 @@ let weathernames = JSON.parse(localStorage.getItem("cities"));
 
 //Load previous added city's
 function weatherLoad(weathernames){
-    console.log(weathernames, "ASDSADADSAD");
     if(weathernames != null){
         weathernames.forEach(function (name){
-            searchTerm = `?q=${name}`;
+            searchTerm = `q=${name}`;
             getWeather(searchTerm);
         })
     }
 }
 
 function addCity() {
-    let addclass = document.getElementsByClassName("add__input");
+    let addclass = document.getElementsByClassName("city__input");
     searchTerm = `q=${addclass[0].value.toLowerCase()}`;
     if (searchTerm == "den haag") {
         searchTerm = "the hague";
@@ -31,13 +30,21 @@ function addCity() {
     }
 }
 
+function removeCity() {
+    let city = document.getElementsByClassName("city__input");
+    let cityname = city[0].value;
+    let citydiv = document.getElementsByClassName(`weather__drag ${cityname}`);
+    citydiv[0].parentNode.removeChild(citydiv[0]);
+    names.splice(cityname.toLowerCase(),1);
+    localStorage.setItem("cities", JSON.stringify(names));
+}
+
 //Weather API call
 function getWeather() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?${searchTerm}&APPID=${key}&lang=${language}&units=${units}`)
         .then(result => {
             return result.json();
         }).then(function (weather) {
-            console.log(weather);
             addWeather(weather);
         })
         .catch(function () {
@@ -45,8 +52,8 @@ function getWeather() {
         });
 }
 
+//Add weather info
 function addWeather(weather) {
-    console.log(weather.name);
     if (names.includes(weather.name.toLowerCase())) {
         let weatherTemp = document.getElementsByClassName("weather__temp " + weather.name);
         for (let i = 0; i < weatherTemp.length; i++) {
@@ -128,6 +135,7 @@ function currentPosition(position) {
     getWeather(searchTerm);
 }
 
+//drop and drag
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -157,7 +165,5 @@ function savePositon() {
 }
 
 window.onload = function () {
-    localStorage.clear();
-    console.log(weathernames);
     weatherLoad(weathernames);
 }
