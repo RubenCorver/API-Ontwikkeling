@@ -65,7 +65,7 @@ function addWeather(weather) {
         }
         let weatherRain = document.getElementsByClassName("weather__rain " + weather.name);
         for (let i = 0; i < weatherRain.length; i++) {
-            weatherRain[i].innerHTML = weather.weather[0].main;
+            weatherRain[i].innerHTML = weather.weather[0].description;
         }
         console.log("weather update")
     } else {
